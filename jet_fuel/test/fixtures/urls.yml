@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  url: MyString
-  short_url: MyString
-  click_tally: MyString
-
-two:
-  url: MyString
-  short_url: MyString
-  click_tally: MyString
+# one:
+#   url: MyString
+#   short_url: MyString
+#   click_tally: MyString
+#
+# two:
+#   url: MyString
+#   short_url: MyString
+#   click_tally: MyString

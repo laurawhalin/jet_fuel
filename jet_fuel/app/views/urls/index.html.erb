@@ -1,7 +1,26 @@
 <h1>Jet Fuel</h1>
 
 <%= form_for @url do |f| %>
-  <%= f.label :enter_url %>:
-  <%= f.text_field :url %>
-  <%= f.submit "Shorten" %>
+<%= f.label :enter_url %>:
+<%= f.text_field :url %>
+<%= f.submit "Shorten" %>
+<% end %>
+
+<div class="alert-danger" role="alert">
+  <% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+</div>
+
+<% if @urls %>
+<table border="1">
+  <thead>
+    <tr><td>Full URL</td><td>Shortened URL</td><td><a href="#">Date Added</a></td><td><a href="#">Times Clicked</a></td></tr>
+  </thead>
+  <tbody>
+    <% @urls.each do |url| %>
+    <tr><td><%= url.url %></td><td><%= link_to "localhost:3000/#{url.short_url}", url_path(url), id: "short-url" %></td><td><%= url.created_at %></td><td class="tally"><%= url.click_tally %></td></tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
