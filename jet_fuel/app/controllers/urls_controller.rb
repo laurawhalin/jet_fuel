@@ -1,5 +1,4 @@
 class UrlsController < ApplicationController
-
   def index
     @url = Url.new
     @urls = Url.all
@@ -10,7 +9,7 @@ class UrlsController < ApplicationController
     url_entry = Url.new(url: url_params[:url], short_url: short_url)
 
     if url_entry.save
-      flash[:success] = "Your shortened url is localhost:3000#{url_path(url_entry)}"
+      flash[:success] = "Your short url is localhost:3000#{url_path(url_entry)}"
       redirect_to root_url
     else
       flash[:errors] = "Incorrect URL format entered."
@@ -33,7 +32,7 @@ class UrlsController < ApplicationController
   def shorten
     short_url = Url.generate
 
-    while Url.find_by(short_url: short_url) do
+    while Url.find_by(short_url: short_url)
       short_url = Url.generate
     end
 
