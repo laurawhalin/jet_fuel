@@ -9,6 +9,7 @@ class UrlUsageTest < ActionDispatch::IntegrationTest
     fill_in("url[url]", with: sample_path)
     click_link_or_button("Shorten")
 
+    shortened_url = Url.last.short_url
     assert page.has_content?("short url is localhost:3000/#{shortened_url}")
 
     click_link_or_button("short-url")
