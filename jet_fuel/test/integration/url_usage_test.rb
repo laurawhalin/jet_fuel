@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class UrlUsageTest < ActionDispatch::IntegrationTest
   test "user enters a url and receives a shortened url" do
@@ -11,7 +11,7 @@ class UrlUsageTest < ActionDispatch::IntegrationTest
 
     shortened_url = Url.last.short_url
 
-    assert page.has_content?("Your shortened url is localhost:3000/#{shortened_url}")
+    assert page.has_content?("short url is localhost:3000/#{shortened_url}")
 
     click_link_or_button("short-url")
 
@@ -26,7 +26,7 @@ class UrlUsageTest < ActionDispatch::IntegrationTest
     click_link_or_button("Shorten")
 
     shortened_url = Url.last.short_url
-    click_link('short-url', match: :first)
+    click_link("short-url", match: :first)
 
     visit root_path
 
@@ -38,6 +38,5 @@ class UrlUsageTest < ActionDispatch::IntegrationTest
   test "can sort the list of urls by when they were added" do
     Url.create(url: "http://www.laurawhalin.com", short_url: "57thr")
     Url.create(url: "https://github.com/laurawhalin", short_url: "55thh")
-    
   end
 end
