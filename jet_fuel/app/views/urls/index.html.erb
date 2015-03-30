@@ -6,7 +6,7 @@
 <%= f.submit "Shorten" %>
 <% end %>
 
-<div class="alert-danger" role="alert">
+<div class="alert">
   <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
   <% end %>
@@ -15,9 +15,9 @@
 <% if @urls %>
 <table border="1">
   <thead>
-    <tr><td>Full URL</td><td>Shortened URL</td><td><a href="#">Date Added</a></td><td><a href="#">Times Clicked</a></td></tr>
+    <tr><td>Full URL</td><td>Shortened URL</td><td><%= sortable "created_at", "Date added" %></td><td><%= link_to "Times Clicked", root_path %></td></tr>
   </thead>
-  <tbody>
+  <tbody id="url-list">
     <% @urls.each do |url| %>
     <tr><td><%= url.url %></td><td><%= link_to "localhost:3000/#{url.short_url}", url_path(url), id: "short-url" %></td><td><%= url.created_at %></td><td class="tally"><%= url.click_tally %></td></tr>
     <% end %>
