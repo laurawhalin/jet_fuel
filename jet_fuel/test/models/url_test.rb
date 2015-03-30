@@ -7,7 +7,7 @@ class UrlTest < ActiveSupport::TestCase
   end
 
   should validate_presence_of(:url)
-  should allow_value('http://foo.com', 'http://bar.com/baz').
+  should allow_value("http://foo.com", "http://bar.com/baz").
     for(:url)
   should validate_presence_of(:short_url)
   should validate_uniqueness_of(:short_url)
