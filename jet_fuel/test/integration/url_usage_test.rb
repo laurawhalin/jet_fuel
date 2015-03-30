@@ -25,7 +25,6 @@ class UrlUsageTest < ActionDispatch::IntegrationTest
     fill_in("url[url]", with: sample_path)
     click_link_or_button("Shorten")
 
-    shortened_url = Url.last.short_url
     click_link("short-url", match: :first)
 
     visit root_path
